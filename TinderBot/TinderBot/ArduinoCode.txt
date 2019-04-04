@@ -1,0 +1,92 @@
+﻿/* Sweep
+ by BARRAGAN <http://barraganstudio.com>
+ This example code is in the public domain.
+
+ modified 8 Nov 2013
+ by Scott Fitzgerald
+ http://www.arduino.cc/en/Tutorial/Sweep
+
+ Notifications.
+
+ RightServo 170 = swipe 75 = default
+
+ LeftServo Needs to rotate a little bit
+
+ Centerservo
+ 
+ 
+*/
+
+#include <Servo.h>
+
+Servo leftServo;  
+Servo rightServo;  
+Servo centerServo;  
+
+const int leftSwipePort = 9;
+const int rightSwipePort = 10;
+const int centerSwipePort = 11;
+
+int pos = 0;    // variable to store the servo position
+
+void setup() {
+  Serial.begin(9600);
+  leftServo.attach(leftSwipePort);  // attaches the servo on pin 9 to the servo object
+  rightServo.attach(rightSwipePort); 
+  centerServo.attach(centerSwipePort); 
+}
+
+void loop() {
+  if (Serial.available())
+  {
+    String input = Serial.readString();
+    if(input=="TINDERCONNECT")
+    {
+      Serial.print("TINDERRESPONSE");
+    }
+    else{
+      Serial.print(input);
+    }
+    
+    if(input=="CENTER")
+    {
+      
+      centerServo.write(170);              // tell servo to go to position in variable 'pos'
+
+      delay(650);
+      centerServo.write(75); 
+      delay(650);
+      //Serial.print("DONE");
+      //centerServo.detach();
+      //myservo.write(10); 
+    }
+
+    if(input=="LEFT")
+    {
+      
+      leftServo.write(55);              // tell servo to go to position in variable 'pos'
+
+      delay(650);
+      leftServo.write(160); 
+      delay(650);
+      //Serial.print("DONE");
+      //centerServo.detach();
+      //myservo.write(10); 
+    }
+
+    if(input=="RIGHT")
+    {
+      
+      rightServo.write(170);              // tell servo to go to position in variable 'pos'
+
+      delay(650);
+      rightServo.write(75); 
+      delay(650);
+      //Serial.print("DONE");
+      //centerServo.detach();
+      //myservo.write(10); 
+    }
+    
+  }
+  delay(33);
+}
