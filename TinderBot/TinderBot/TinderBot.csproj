@@ -55,6 +55,14 @@
       <Project>{ed3c5a5d-2b6e-40a6-8faf-3c37f3986941}</Project>
       <Name>CameraApi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FaceDetectionApi\FaceDetectionApi.csproj">
+      <Project>{ba9f58ae-7325-4c87-bc36-d5225e7cd31a}</Project>
+      <Name>FaceDetectionApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TinderArduinoApi\TinderArduinoApi.csproj">
+      <Project>{603fd177-dbd3-4705-8fbe-82dab9de74a8}</Project>
+      <Name>TinderArduinoApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

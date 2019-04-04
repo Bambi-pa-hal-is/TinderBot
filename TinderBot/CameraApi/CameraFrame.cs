@@ -22,6 +22,7 @@ namespace CameraApi
         bool isCameraRunning = true;
         private bool setSizeOfFrame { get; set; } = true;
         public PictureBox CameraContainer { get; set; }
+        private object _locker { get; set; } = new object();
 
         public CameraFrame()
         {
@@ -44,7 +45,15 @@ namespace CameraApi
 
         public Bitmap CaptureImage()
         {
-            return new Bitmap(CameraContainer.Image);
+            lock(_locker)
+            {
+                Bitmap image = null;
+                CameraContainer.Invoke((MethodInvoker)delegate
+                {
+                    image = new Bitmap(CameraContainer.Image);
+                });
+                return image;
+            }
         }
 
         private void CaptureCameraCallback()
@@ -82,7 +91,10 @@ namespace CameraApi
                     {
                         CameraContainer.Image.Dispose();
                     }
-                    CameraContainer.Image = image;
+                    lock(_locker)
+                    {
+                        CameraContainer.Image = image;
+                    }
                 }
             }
         }
