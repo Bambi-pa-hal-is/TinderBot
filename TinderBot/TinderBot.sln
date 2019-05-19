@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinderBot", "TinderBot\TinderBot.csproj", "{93B52BAA-15BC-41C0-8A97-D876468C5B98}"
 EndProject
@@ -10,6 +10,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceDetectionApi", "FaceDetectionApi\FaceDetectionApi.csproj", "{BA9F58AE-7325-4C87-BC36-D5225E7CD31A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinderArduinoApi", "TinderArduinoApi\TinderArduinoApi.csproj", "{603FD177-DBD3-4705-8FBE-82DAB9DE74A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Options", "Options\Options.csproj", "{EA23A7B4-3313-4FAD-9587-B4105E9BADEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandApi", "CommandApi\CommandApi.csproj", "{BAA2BDBE-5722-4333-8375-77A702B875C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDBApi", "MongoDBApi\MongoDBApi.csproj", "{EAA08C1B-5B25-4F3D-820F-CCBAADBD4564}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{F62E6829-F40B-41F0-95CD-D17E2703A58B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +41,22 @@ Global
 		{603FD177-DBD3-4705-8FBE-82DAB9DE74A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{603FD177-DBD3-4705-8FBE-82DAB9DE74A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{603FD177-DBD3-4705-8FBE-82DAB9DE74A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA23A7B4-3313-4FAD-9587-B4105E9BADEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA23A7B4-3313-4FAD-9587-B4105E9BADEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA23A7B4-3313-4FAD-9587-B4105E9BADEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA23A7B4-3313-4FAD-9587-B4105E9BADEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA2BDBE-5722-4333-8375-77A702B875C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA2BDBE-5722-4333-8375-77A702B875C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA2BDBE-5722-4333-8375-77A702B875C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA2BDBE-5722-4333-8375-77A702B875C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAA08C1B-5B25-4F3D-820F-CCBAADBD4564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA08C1B-5B25-4F3D-820F-CCBAADBD4564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA08C1B-5B25-4F3D-820F-CCBAADBD4564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA08C1B-5B25-4F3D-820F-CCBAADBD4564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62E6829-F40B-41F0-95CD-D17E2703A58B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62E6829-F40B-41F0-95CD-D17E2703A58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62E6829-F40B-41F0-95CD-D17E2703A58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62E6829-F40B-41F0-95CD-D17E2703A58B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

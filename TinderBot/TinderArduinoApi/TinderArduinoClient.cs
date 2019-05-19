@@ -11,6 +11,24 @@ namespace TinderArduinoApi
 {
     public class TinderArduinoClient
     {
+
+        private static TinderArduinoClient _current = null;
+        public static TinderArduinoClient Current
+        {
+            get
+            {
+                if(_current==null)
+                {
+                    _current = new TinderArduinoClient();
+                }
+                return _current;
+            }
+            set
+            {
+                Current = value;
+            }
+        }
+
         public SerialPort Port { get; set; }
 
         public TinderArduinoClient()
@@ -86,7 +104,7 @@ namespace TinderArduinoApi
                     }
                    
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
 
                 }

@@ -1,7 +1,10 @@
 ﻿using CameraApi;
+using CommandApi;
+using FaceDetectionApi;
 using FaceDetectionApi.Helpers;
 using FaceDetectionApi.JavascriptInject;
 using FaceDetectionApi.MicrosoftAzure;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
@@ -17,51 +20,27 @@ namespace TinderBot
     {
         static void Main(string[] args)
         {
-            Camera c = new Camera();
-            c.LoadCamera();
+            MongoDBApi.MongoDBClient.Current.CreateTableIfNotExists("Arre");
+            MongoDBApi.MongoDBClient.Current.InsertTrainData(new Face() { faceId = Guid.NewGuid().ToString(),RightSwipe = true }, "Arre");
+            List<Face> arr = new List<Face>()
+            {
+                new Face() { faceId = Guid.NewGuid().ToString(),RightSwipe = false },
+                new Face() { faceId = Guid.NewGuid().ToString(),RightSwipe = false }
+            };
+            MongoDBApi.MongoDBClient.Current.InsertTrainData(arr, "Arre");
+            List<Face> hej = MongoDBApi.MongoDBClient.Current.GetAllDataFromTable("Arre");
+
+
+            Camera.Current.LoadCamera();
             System.Threading.Thread.Sleep(4000);
-            //var image = c.GetCameraImage();
-
-            WebBrowserHelper.FixBrowserVersion();
-            JavascriptInjectService scraperService = new JavascriptInjectService();
-            scraperService.CreateInstances();
-
-            var jsInjector = scraperService.GetScraperOfType<MicrosoftAzureInjector>(typeof(MicrosoftAzureInjector));
-
-            var arduinoClient = new TinderArduinoClient();
-            arduinoClient.Open();
-
-            //jsInjector.GetFaceImageData(image);
+            TinderArduinoClient.Current.Open();
+            FDA.Init();
+            BaseCommand.InitCommands();
 
             while (true)
             {
-                var test = Console.ReadLine();
-                if(test.ToLower()=="cam")
-                {
-                    var camImage = c.GetCameraImage();
-                    jsInjector.GetFaceImageData(camImage);
-                    //camImage.Save("bild.png",ImageFormat.Png);
-                    //var kalle = "hjej";
-                    //kalle += "5";
-                }
-
-                if(test.ToLower() == "left")
-                {
-                    arduinoClient.Left();
-                }
-                if (test.ToLower() == "right")
-                {
-                    arduinoClient.Right();
-                }
-                if (test.ToLower() == "center")
-                {
-                    arduinoClient.Center();
-                }
-                if(test.ToLower() == "quit")
-                {
-                    arduinoClient.Close();
-                    break;
-                }
+                var input = Console.ReadLine();
+                BaseCommand.ExecuteSuitableCommand(input);
             }
         }
     }

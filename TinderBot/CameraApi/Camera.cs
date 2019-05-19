@@ -11,6 +11,23 @@ namespace CameraApi
 {
     public class Camera : IDisposable
     {
+        public static Camera _current = null;
+        public static Camera Current
+        {
+            get
+            {
+                if(_current==null)
+                {
+                    _current = new Camera();
+                }
+                return _current;
+            }
+            set
+            {
+                Current = value;
+            }
+        }
+
         public Thread CameraThread { get; set; }
         private CameraFrame CameraFrame { get; set; }
         public Camera()

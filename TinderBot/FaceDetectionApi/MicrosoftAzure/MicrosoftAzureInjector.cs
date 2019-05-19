@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using Models;
 
 namespace FaceDetectionApi.MicrosoftAzure
 {
@@ -34,7 +35,7 @@ namespace FaceDetectionApi.MicrosoftAzure
             //Console.WriteLine(returnType.Name);
         }
 
-        public string GetFaceImageData(Bitmap image)
+        public List<Face> GetFaceImageData(Bitmap image)
         {
             //var htmlItems = JavascriptInjectService.GetElementsByTagName("input");
             System.IO.MemoryStream ms = new MemoryStream();
@@ -47,31 +48,17 @@ namespace FaceDetectionApi.MicrosoftAzure
                 this.Browser.Document.GetElementById("FaceDetection_Image_Base64Url").SetAttribute("value", imageAsBase64);
             });
 
-            var target = "data-event-property=\"Face Detection\"";
 
-            string javascript = @"
-                function getAllElementsWithAttribute(attribute, value)
-                {
-                  var allElements = document.getElementsByTagName('*');
-                  for (var i = 0, n = allElements.length; i < n; i++)
-                  {
-                    if (allElements[i].getAttribute(attribute) !== null)
-                    {
-                        if(allElements[i].getAttribute(attribute) === value)
-                        {
-                            return allElements[i];
-                        }
-                      // Element exists with attribute. Add to array.
-                     // matchingElements.push(allElements[i]);
-                    }
-                  }
-                  return null;
-                }
-                
-                var input = getAllElementsWithAttribute('data-event-property', 'Face Detection');
-                input.click()";
+            string startupPath = System.IO.Directory.GetCurrentDirectory();
 
-            JavascriptInjectService.InjectRawJavascript(javascript);
+            string startupPath2 = Environment.CurrentDirectory;
+
+            string javascript = File.ReadAllText( "./Scripts/InjectImage.js");
+
+
+
+
+            List<Face> faceData = JavascriptInjectService.InjectJavascript<List<Face>>(javascript);
 
             //document.getElementById("FaceDetection_Image_Base64Url").value
 
@@ -83,7 +70,7 @@ namespace FaceDetectionApi.MicrosoftAzure
              * data-event="area-products-demo-clicked-upload" 
              * data-event-property="Face Detection">*/
             //this.JavascriptInjectService.Inj
-            return "";
+            return faceData;
         }
     }
 }

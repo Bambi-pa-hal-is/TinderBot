@@ -114,7 +114,7 @@ namespace FaceDetectionApi.JavascriptInject
             }));
         }
 
-        public T InjectJavascript<T>(string scriptName)
+        public T InjectJavascript<T>(string script)
         {
 
             Browser.Invoke(new Action(() =>
@@ -122,21 +122,15 @@ namespace FaceDetectionApi.JavascriptInject
                 var element = Browser.Document.GetElementById("ReturnToConsole");
                 if (element == null)
                 {
-                    var tag = Browser.Document.CreateElement("div");
-                    tag.Id = "ReturnToConsole";
-                    Browser.Document.Body.AppendChild(tag);
+                  //  var tag = Browser.Document.CreateElement("div");
+                  //  tag.Id = "ReturnToConsole";
+                  //  Browser.Document.Body.AppendChild(tag);
                 }
             }));
 
-            //string javascript = "alert('Hello');";
-            string defaultPath = "Scripts\\Custom\\";
-            string projectPath = System.IO.Directory.GetCurrentDirectory();
-            string combinedPath = Path.Combine(projectPath, defaultPath + scriptName);
-            string script = File.ReadAllText(combinedPath);
             Browser.Invoke(new Action(() =>
             {
                 Browser.Document.InvokeScript("eval", new object[] { script });
-                Console.WriteLine("Invoked: " + scriptName);
             }));
 
             string json = "";
@@ -148,6 +142,8 @@ namespace FaceDetectionApi.JavascriptInject
                     if(element!=null)
                     {
                         json = Browser.Document.GetElementById("ReturnToConsole").InnerHtml;
+                        //Browser.Document.GetElementById("ReturnToConsole").InnerHtml = "";
+                        Browser.Document.GetElementById("ReturnToConsole").Id = Guid.NewGuid().ToString();
                     }
                 }));
             }
