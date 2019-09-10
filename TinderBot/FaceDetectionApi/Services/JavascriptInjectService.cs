@@ -71,6 +71,7 @@ namespace FaceDetectionApi.JavascriptInject
            // form.WindowState = FormWindowState.Maximized;
             form.Controls.Add(scraper.Browser);
             form.Name = scraper.Name;
+            form.Text = "Webbrowser";
             //form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             form.Height = 500;
             form.Width = 700;

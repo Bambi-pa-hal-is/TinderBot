@@ -33,6 +33,7 @@ namespace CameraApi
             this.Height = 5;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.Text = "Camera";
            // this.ControlBox = false;
             this.Location = new System.Drawing.Point(0,0);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;

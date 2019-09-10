@@ -5,6 +5,7 @@ using FaceDetectionApi.Helpers;
 using FaceDetectionApi.JavascriptInject;
 using FaceDetectionApi.MicrosoftAzure;
 using Models;
+using PointCloudRenderer;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
@@ -20,6 +21,8 @@ namespace TinderBot
     {
         static void Main(string[] args)
         {
+            var window = GameWindow.CreateGameWindow();
+            window.PointCloud = ArreMath.TemplateData.GetPointArray();
             MongoDBApi.MongoDBClient.Current.CreateTableIfNotExists("Arre");
             MongoDBApi.MongoDBClient.Current.InsertTrainData(new Face() { faceId = Guid.NewGuid().ToString(),RightSwipe = true }, "Arre");
             List<Face> arr = new List<Face>()
