@@ -40,10 +40,17 @@ namespace Models
         public Makeup makeup { get; set; }
         public Emotion emotion { get; set; }
         public Occlusion occlusion { get; set; }
-        public object[] accessories { get; set; }
+        public Accessory[] accessories { get; set; }
         public Blur blur { get; set; }
         public Exposure exposure { get; set; }
         public Noise noise { get; set; }
+    }
+
+    [BsonIgnoreExtraElements]
+    public class Accessory
+    {
+        public string type { get; set; }
+        public float condidence { get; set; }
     }
 
     public class Hair

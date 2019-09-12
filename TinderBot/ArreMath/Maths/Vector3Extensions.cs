@@ -28,5 +28,12 @@ namespace ArreMath.Maths
 
             //Math.Tan(pitch) * height
         }
+
+        public static float[] ToTrainArray(this Vector3 v)
+        {
+            return new float[] { v.X, v.Y };
+        }
     }
+
+    
 }

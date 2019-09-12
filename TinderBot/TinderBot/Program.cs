@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TinderArduinoApi;
+using TinderML;
 
 namespace TinderBot
 {
@@ -21,6 +22,7 @@ namespace TinderBot
     {
         static void Main(string[] args)
         {
+            new Class1();
             var window = GameWindow.CreateGameWindow();
             window.PointCloud = ArreMath.TemplateData.GetPointArray();
             MongoDBApi.MongoDBClient.Current.CreateTableIfNotExists("Arre");
@@ -39,6 +41,7 @@ namespace TinderBot
             TinderArduinoClient.Current.Open();
             FDA.Init();
             BaseCommand.InitCommands();
+
 
             while (true)
             {

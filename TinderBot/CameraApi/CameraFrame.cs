@@ -48,12 +48,20 @@ namespace CameraApi
         {
             lock(_locker)
             {
-                Bitmap image = null;
-                CameraContainer.Invoke((MethodInvoker)delegate
+                try
                 {
-                    image = new Bitmap(CameraContainer.Image);
-                });
-                return image;
+                    Bitmap image = null;
+                    CameraContainer.Invoke((MethodInvoker)delegate
+                    {
+                        image = new Bitmap(CameraContainer.Image);
+                    });
+                    return image;
+                }
+                catch(Exception)
+                {
+                    Thread.Sleep(100);
+                    return CaptureImage();
+                }
             }
         }
 

@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArreMath", "ArreMath\ArreMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointCloudRenderer", "PointRenderer\PointCloudRenderer.csproj", "{4C35E8D8-2405-4B85-AE1B-C411626A1C94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinderML", "TinderML\TinderML.csproj", "{4A0FFBD3-8575-4C73-8BC5-18714D02F3F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{4C35E8D8-2405-4B85-AE1B-C411626A1C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C35E8D8-2405-4B85-AE1B-C411626A1C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C35E8D8-2405-4B85-AE1B-C411626A1C94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A0FFBD3-8575-4C73-8BC5-18714D02F3F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A0FFBD3-8575-4C73-8BC5-18714D02F3F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A0FFBD3-8575-4C73-8BC5-18714D02F3F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A0FFBD3-8575-4C73-8BC5-18714D02F3F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

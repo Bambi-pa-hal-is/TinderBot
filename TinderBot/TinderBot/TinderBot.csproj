@@ -84,6 +84,10 @@
       <Project>{603fd177-dbd3-4705-8fbe-82dab9de74a8}</Project>
       <Name>TinderArduinoApi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TinderML\TinderML.csproj">
+      <Project>{4a0ffbd3-8575-4c73-8bc5-18714d02f3f4}</Project>
+      <Name>TinderML</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArduinoCode.txt" />

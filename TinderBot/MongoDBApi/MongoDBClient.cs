@@ -73,5 +73,18 @@ namespace MongoDBApi
         {
             return this.mongoDatabase.GetCollection<Face>(tableName).Find(_ => true).ToList<Face>();
         }
+
+        public List<TrainFace> GetAllDataNormalisedFromTable(string tableName)
+        {
+            var faces = GetAllDataFromTable(tableName);
+            List<TrainFace> trainFaces = new List<TrainFace>();
+            foreach(var face in faces)
+            {
+                var trainFace = new TrainFace(face);
+                trainFace.Normalize();
+                trainFaces.Add(trainFace);
+            }
+            return trainFaces;
+        }
     }
 }

@@ -65,12 +65,17 @@
       <Project>{f62e6829-f40b-41f0-95cd-d17e2703a58b}</Project>
       <Name>Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MongoDBApi\MongoDBApi.csproj">
+      <Project>{eaa08c1b-5b25-4f3d-820f-ccbaadbd4564}</Project>
+      <Name>MongoDBApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TinderArduinoApi\TinderArduinoApi.csproj">
       <Project>{603fd177-dbd3-4705-8fbe-82dab9de74a8}</Project>
       <Name>TinderArduinoApi</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

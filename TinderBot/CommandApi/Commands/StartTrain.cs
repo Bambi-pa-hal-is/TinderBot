@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using TinderArduinoApi;
+using System.Linq;
 
 namespace CommandApi.Commands
 {
@@ -48,12 +49,21 @@ namespace CommandApi.Commands
                 {
                     var image = CameraApi.Camera.Current.GetCameraImage();
                     List<Face> faceData = FaceDetectionApi.FDA.CurrentMicrosoftAzureInjector.GetFaceImageData(image);
+                    
                     foreach(var item in faceData)
                     {
                         item.RightSwipe = swipeDirection;
                     }
+                    if (faceData.Count != 0)
+                    {
+                        MongoDBApi.MongoDBClient.Current.InsertTrainData(faceData.FirstOrDefault(),trainName);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No face found");
+                    }
                     string dataJson = JsonConvert.SerializeObject(faceData);
-                    File.WriteAllText("./" + trainName + "/" + Guid.NewGuid().ToString() + ".json" , dataJson);
+                    //File.WriteAllText("./" + trainName + "/" + Guid.NewGuid().ToString() + ".json" , dataJson);
                     if(swipeDirection==true)
                     {
                         TinderArduinoClient.Current.Right();
@@ -62,12 +72,13 @@ namespace CommandApi.Commands
                     {
                         TinderArduinoClient.Current.Left();
                     }
+                    System.Threading.Thread.Sleep(500);
                 }
                 if(pressedKey.Key == ConsoleKey.Escape)
                 {
                     break;
                 }
-                System.Threading.Thread.Sleep(500);
+                
             }
             
             return null;
